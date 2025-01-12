@@ -192,7 +192,6 @@ if __name__ == "__main__":
     with open('url_start.csv', 'r') as file:
         csv_reader = csv.reader(file)
         urls = [row[0] for row in csv_reader]
-
     # Configure and start the Scrapy crawler
     process = CrawlerProcess(settings={
         'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
@@ -201,7 +200,8 @@ if __name__ == "__main__":
         'DEPTH_LIMIT': 5  # Adjust depth if needed
     })
 
-    # Start the crawling process for each URL
+        # Start the crawling process for each URL
     for url in urls:
         process.crawl(SiteCrawler, start_url=url)
     process.start()
+
